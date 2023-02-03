@@ -1,5 +1,7 @@
 int min = 30;
 float rotation = 0;
+boolean leftPressed = false;
+boolean rightPressed = false;
 public void setup()
 {
   background(0);
@@ -14,23 +16,32 @@ public void draw()
   
   menger(width/2, height/2, -600, 250);
   beginCamera();
-  camera();
+  camera(width/2, height/2, -600, (float)(Math.cos(rotation)*100), height/2, (float)(Math.sin(rotation)*100), 0, 1, 0);
   rotateY(rotation);
-  translate(0, 0, 800);
-  if (keyPressed) {
-    if (key == 'a') {
-      rotation -= Math.PI / 100;
-    } else if (key == 'd') {
-      rotation += Math.PI / 100;
-    }
-    if (key == 'w' && min - 5 > 10) {
-      min -= 5;
-    }
-    if (key == 's' && min + 5 < 500) {
-      min += 5;
-    }
-  }
+  translate(0, 0, 600);
+  rotation += Math.PI / 200;
   endCamera();
+  
+  if (leftPressed && min > 10) min -= 5;
+  else if (rightPressed && min < 500) min += 5;
+}
+
+void keyPressed() {
+   if (keyCode == LEFT) {
+     leftPressed = true;
+   }
+   else if (keyCode == RIGHT) {
+     rightPressed = true;
+   }
+}
+
+void keyReleased() {
+   if (keyCode == LEFT) {
+     leftPressed = false;
+   }
+   else if (keyCode == RIGHT) {
+     rightPressed = false;
+   }
 }
 
 public void sierpinski(int x, int y, int len) 
@@ -48,7 +59,7 @@ public void menger(int x, int y, int z, int len) {
   if (len <= min) {
     pushMatrix();
     translate(x, y, z);
-    box(min/2);
+    box(len*1.3);
     popMatrix();
   } else {
     // center row
