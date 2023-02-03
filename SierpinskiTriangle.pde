@@ -15,12 +15,12 @@ public void draw()
   //min = mouseX;
   
   menger(width/2, height/2, -600, 250);
-  beginCamera();
-  camera(width/2, height/2, -600, (float)(Math.cos(rotation)*100), height/2, (float)(Math.sin(rotation)*100), 0, 1, 0);
-  rotateY(rotation);
-  translate(0, 0, 600);
-  rotation += Math.PI / 200;
-  endCamera();
+  //beginCamera();
+  //camera(width/2, height/2, -600, (float)(Math.cos(rotation)*100), height/2, (float)(Math.sin(rotation)*100), 0, 1, 0);
+  //rotateY(rotation);
+  //translate(0, 0, 600);
+  //endCamera();
+  rotation += Math.PI / 36;
   
   if (leftPressed && min > 10) min -= 5;
   else if (rightPressed && min < 500) min += 5;
@@ -59,7 +59,9 @@ public void menger(int x, int y, int z, int len) {
   if (len <= min) {
     pushMatrix();
     translate(x, y, z);
+    rotateY(rotation);
     box(len*1.3);
+    
     popMatrix();
   } else {
     // center row
