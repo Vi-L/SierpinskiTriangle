@@ -59,7 +59,7 @@ public void menger(int x, int y, int z, int len) {
   if (len <= min) {
     pushMatrix();
     translate(x, y, z);
-    rotateY(rotation);
+    rotate(0, rotation, 0);
     box(len*1.3);
     
     popMatrix();
