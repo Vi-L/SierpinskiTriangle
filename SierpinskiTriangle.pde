@@ -6,24 +6,24 @@ public void setup()
 {
   background(0);
   noStroke();
-  size(500, 500, P3D);
+  size(500, 500);
 }
 public void draw()
 {
   background(0);
-  //sierpinski(0, 500, 500);
-  //min = mouseX;
-  
-  menger(width/2, height/2, -600, 250);
+  sierpinski(0, 500, 500);
+  min = mouseX;
+  /* Unfortunately 3D doesn't work on Github but it looks cool on Processing :) */
+  //menger(width/2, height/2, -600, 250);
   //beginCamera();
   //camera(width/2, height/2, -600, (float)(Math.cos(rotation)*100), height/2, (float)(Math.sin(rotation)*100), 0, 1, 0);
   //rotateY(rotation);
   //translate(0, 0, 600);
   //endCamera();
-  rotation += Math.PI / 36;
+  //rotation += Math.PI / 36;
   
-  if (leftPressed && min > 10) min -= 5;
-  else if (rightPressed && min < 500) min += 5;
+  //if (leftPressed && min > 10) min -= 5;
+  //else if (rightPressed && min < 500) min += 5;
 }
 
 void keyPressed() {
